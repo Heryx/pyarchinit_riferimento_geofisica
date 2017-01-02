@@ -882,30 +882,30 @@ class Geophysics_table:
 
 	# define tables
 	geophysics_table = Table('geophysics_table', metadata,
-	Column('id_grid', Integer, primary_key=True),
-	Column('sito', Text),
-	Column('progetto', String(100)),
-	Column('metodo', Text),
-	Column('anno', String(4)),
-	Column('settore', String(10)),
-	Column('area', String(10)),
-	Column('griglia', String(10)),
-	Column('pdc', Float(3,2)),  #decidere se mettere float o String
-	Column('quota', Float(3,2)),
-	Column('descrizione', Text),
-	Column('interpretazione', Text),
-	Column('schedatore', Text),
-	Column('data_schedatura', String(20)),
-	Column('modello', Text),
-	Column('velocita', Text),
-	Column('x', String(10)),
-	Column('y', String(10)),
-	Column('z', String(10)),
-	Column('date', Text),
-	Column('frequenza', Text),
-	Column('risoluzione', Float(2,2)),
-	Column('max_prof', String(10)),
-	Column('range', String(10)),
+	Column('id_grid', Integer, primary_key=True),   #0
+	Column('sito', Text),                           #1
+	Column('progetto', String(100)),                #2
+	Column('metodo', Text),                         #3
+	Column('anno', String(4)),                      #4
+	Column('settore', String(10)),                  #5
+	Column('area', String(10)),                     #6
+	Column('griglia', String(10)),                  #7
+	Column('pdc', Float(3,2)),                      #8
+	Column('quota', Float(3,2)),                    #9
+	Column('descrizione', Text),                    #10
+	Column('interpretazione', Text),                #11
+	Column('schedatore', Text),                     #12
+	Column('data_schedatura', String(20)),          #13
+	Column('modello', Text),                        #14
+	Column('velocita', Text),                       #15
+	Column('x', String(10)),                        #16
+	Column('y', String(10)),                        #17
+	Column('z', String(10)),                        #18
+	Column('date', Text),                           #19
+	Column('frequenza', Text),                      #20
+	Column('risoluzione', Float(2,2)),              #21
+	Column('max_prof', String(10)),                 #22
+	Column('range', String(10)),                    #23
 
 
 	# explicit/composite unique constraint.  'name' is optional.
