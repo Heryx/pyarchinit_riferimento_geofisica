@@ -528,8 +528,8 @@ class pyarchinit_Geophysics(QDialog, Ui_DialogGeo):
                 unicode(self.DATA_LIST[i].settore),         # 5 - settore
                 unicode(self.DATA_LIST[i].area),            # 6 - area
                 unicode(self.DATA_LIST[i].griglia),         # 7 - griglia
-                float(self.DATA_LIST[i].pdc),               # 8 - pdc
-                float(self.DATA_LIST[i].quota),             # 9 - quota
+                unicode(self.DATA_LIST[i].pdc),               # 8 - pdc
+                unicode(self.DATA_LIST[i].quota),             # 9 - quota
                 unicode(self.DATA_LIST[i].descrizione),     # 10 - descrizione
                 unicode(self.DATA_LIST[i].interpretazione), # 11 - interpretazione
                 unicode(self.DATA_LIST[i].schedatore),      # 12 - schedatore
@@ -569,7 +569,7 @@ class pyarchinit_Geophysics(QDialog, Ui_DialogGeo):
     ##			single_cassa.append(tip_rep_res_list)
     ##
     ##		#QMessageBox.warning(self,'tk',str(data_for_pdf), QMessageBox.Ok)
-    ##		return data_for_pdf
+    ##		return data_for_pdf vediamo che succede
 
     ####################################################
     # ********************************************************************************
@@ -622,6 +622,7 @@ class pyarchinit_Geophysics(QDialog, Ui_DialogGeo):
         bibliografia = self.table2dict("self.tableWidget_bibliografia")
 
         try:
+            """
             if self.lineEdit_settore.text() == "":
                 settore = None
             else:
@@ -646,7 +647,7 @@ class pyarchinit_Geophysics(QDialog, Ui_DialogGeo):
                 interpretazione = None
             else:
                 interpretazione = float(self.textEdit_interpretazione.text())
-
+                """
             if self.lineEdit_x.text() == "":
                 x = None
             else:
