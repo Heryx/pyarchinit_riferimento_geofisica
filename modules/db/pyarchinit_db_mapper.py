@@ -663,24 +663,24 @@ try:
 		#def __repr__"
 		def __repr__(self):
 			return "<STRUTTURA('%d', '%s', '%s', '%d', '%s', '%s', '%s', '%s', '%s', '%d', '%d', '%d', '%d', '%s', '%s', '%s', '%s', '%s')>" % (
-			self.id_struttura,
-			self.sito,
-			self.sigla_struttura,
-			self.numero_struttura,
-			self.tipologia_struttura,
-			self.categoria_struttura.
-			self.definizione_struttura,
-			self.descrizione,
-			self.interpretazione,
-			self.periodo_iniziale,
-			self.fase_iniziale,
-			self.periodo_finale,
-			self.fase_finale,
-			self.datazione_estesa,
-			self.materiali_impiegati,
-			self.elementi_strutturali,
-			self.rapporti_struttura,
-			self.misure_struttura
+				self.id_struttura,
+				self.sito,
+				self.sigla_struttura,
+				self.numero_struttura,
+				self.tipologia_struttura,
+				self.categoria_struttura,
+				self.definizione_struttura,
+				self.descrizione,
+				self.interpretazione,
+				self.periodo_iniziale,
+				self.fase_iniziale,
+				self.periodo_finale,
+				self.fase_finale,
+				self.datazione_estesa,
+				self.materiali_impiegati,
+				self.elementi_strutturali,
+				self.rapporti_struttura,
+				self.misure_struttura
 			)
 	#mapper
 
@@ -707,7 +707,7 @@ try:
 
 		#def __repr__"
 		def __repr__(self):
-			return "<MEDIA('%d', '%s', '%s', %s, '%s','%s')>" % (
+			return "<MEDIA('%d', '%s', '%s', %s, '%s','%s', '%s')>" % (
 			self.id_media,
 			self.mediatype,
 			self.filename,
@@ -1279,7 +1279,7 @@ try:
 
 		#def __repr__"
 		def __repr__(self):
-			return "<DETETA('%d','%s','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d')>" % (
+			return "<DETETA('%d','%s','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d')>" % (
 			self.id_det_eta,
 			self.sito,
 			self.nr_individuo,
@@ -1516,7 +1516,7 @@ try:
 
 		#def __repr__"
 		def __repr__(self):
-			return "<DOCUMENTAZIONE('%d', '%s', '%s', '%s', '%s', '%s', '%s', '%s')>" % (
+			return "<DOCUMENTAZIONE('%d', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')>" % (
 			self.id_documentazione,#0
 			self.sito,#1
 			self.nome_doc, #2
@@ -1630,7 +1630,7 @@ try:
 		#def __repr__"
 		def __repr__(self):
 			return "<RELATIONSHIP_CHECK('%d', '%s', '%s', '%d', '%s', '%s', '%s', '%d', '%s', '%s')>" % (
-			self.rel_check,					                  #0 d
+			self.id_rel_check,					                  #0 d
 			self.sito,							          	  #1 s
 			self.area,                                        #2 s 
 			self.us,       									  #3 d
