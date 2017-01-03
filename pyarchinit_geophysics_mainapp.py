@@ -1334,29 +1334,29 @@ class pyarchinit_Geophysics(QDialog, Ui_DialogGeo):
         """
         # data
         self.DATA_LIST_REC_TEMP = [
-            unicode(self.comboBox_sito.currentText()),  # 1 - Sito
-            unicode(self.lineEdit_progetto.text()),  # 2 - num_inv
-            unicode(self.comboBox_metodo.currentText()),  # 3 - collocazione
-            unicode(self.lineEdit_anno.text()),  # 4 - oggetto
-            unicode(self.lineEdit_settore.text()),
-            unicode(self.comboBox_area.currentText()),
-            unicode(self.lineEdit_griglia.text()),             # 6 - Griglia
-            unicode(self.lineEdit_pdc.text()),
-            unicode(self.lineEdit_quota.text()),
-            unicode(self.textEdit_descrizione.toPlainText()),  # 15 - descrizione
-            unicode(self.textEdit_interpretazione.toPlainText()),  # 15 - descrizione
-            unicode(self.comboBox_schedatore.currentText()),
-            unicode(self.lineEdit_data_schedatura.text()),  # 18 - cronologia
-            unicode(self.comboBox_modello.currentText()),
-            unicode(self.comboBox_velocita.currentText()),
-            unicode(self.lineEdit_x.text()),
-            unicode(self.lineEdit_y.text()),
-            unicode(self.lineEdit_z.text()),
-            unicode(self.dateEdit_date.currentText()),
-            unicode(self.comboBox_frequenza.currentText()),
-            unicode(self.lineEdit_risoluzione.text()),
-            unicode(self.lineEdit_max_prof.text()),
-            unicode(self.lineEdit_range.text()),
+            unicode(self.comboBox_sito.currentText()),      # 1 - Sito
+            unicode(self.lineEdit_progetto.text()),         # 2 - progetto
+            unicode(self.comboBox_metodo.currentText()),    # 3 - metodo
+            unicode(self.lineEdit_anno.text()),             # 4 - anno
+            unicode(self.lineEdit_settore.text()),          # 5 - settore
+            unicode(self.comboBox_area.currentText()),      # 6 - area
+            unicode(self.lineEdit_griglia.text()),          # 7 - griglia
+            unicode(self.lineEdit_pdc.text()),              # 8 - pdc
+            unicode(self.lineEdit_quota.text()),            # 9 - quota
+            unicode(self.textEdit_descrizione.toPlainText()),  # 10 - descrizione
+            unicode(self.textEdit_interpretazione.toPlainText()),  # 11 - interpretazione
+            unicode(self.comboBox_schedatore.currentText()),        # 12 - schedatore
+            unicode(self.lineEdit_data_schedatura.text()),  # 13 - data schedatura
+            unicode(self.comboBox_modello.currentText()),   # 14 - modello
+            unicode(self.comboBox_velocita.currentText()),  # 15 - velocita
+            unicode(self.lineEdit_x.text()),                # 16 - x
+            unicode(self.lineEdit_y.text()),                # 17 - y
+            unicode(self.lineEdit_z.text()),                # 18 - z
+            unicode(self.dateEdit_date.currentText()),      # 19 - date
+            unicode(self.comboBox_frequenza.currentText()), # 20 - frequenza
+            unicode(self.lineEdit_risoluzione.text()),      # 21 - risoluzione
+            unicode(self.lineEdit_max_prof.text()),         # 22 - massima profondità
+            unicode(self.lineEdit_range.text()),            # 23 - range
         ]
 
     def enable_button(self, n):
