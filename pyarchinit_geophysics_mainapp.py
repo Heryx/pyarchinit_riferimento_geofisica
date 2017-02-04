@@ -42,9 +42,9 @@ from psycopg2 import *
 
 # --import pyArchInit modules--#
 # from  pyarchinit_geophysics_ui import Ui_DialogGeo
-from  pyarchinit_geophysics_ui import *
-from  pyarchinit_utility import *
-from  pyarchinit_error_check import *
+from pyarchinit_geophysics_ui import *
+from pyarchinit_utility import *
+from pyarchinit_error_check import *
 import shutil
 
 try:
@@ -160,7 +160,8 @@ class pyarchinit_Geophysics(QDialog, Ui_DialogGeo):
         "frequenza",
         "risoluzione",
         "max_prof",
-        "range"
+        "range",
+        "bibliografia"
     ]
 
     TABLE_FIELDS_UPDATE = [
@@ -186,7 +187,8 @@ class pyarchinit_Geophysics(QDialog, Ui_DialogGeo):
         "frequenza",
         "risoluzione",
         "max_prof",
-        "range"
+        "range",
+        "bibliografia"
     ]
 
     SEARCH_DICT_TEMP = ""
@@ -481,6 +483,8 @@ class pyarchinit_Geophysics(QDialog, Ui_DialogGeo):
 
             self.enable_button(0)
 
+
+
     def on_pushButton_save_pressed(self):
         # save record
         if self.BROWSE_STATUS == "b":
@@ -544,6 +548,8 @@ class pyarchinit_Geophysics(QDialog, Ui_DialogGeo):
                 unicode(self.DATA_LIST[i].risoluzione),     #21 - risoluzione
                 unicode(self.DATA_LIST[i].max_prof),        #22 - massima profondità
                 unicode(self.DATA_LIST[i].range),           #23 - range
+                unicode(self.DATA_LIST[i].bibliografia)  # 17 - rif_biblio
+
             ])
         return data_list
     """
@@ -578,7 +584,7 @@ class pyarchinit_Geophysics(QDialog, Ui_DialogGeo):
         test = 0
         EC = Error_check()
 
-        nr_griglia = self.lineEdit_griglia.text()
+        #       nr_griglia = self.lineEdit_griglia.text()
         #		d_letto_posa = self.lineEdit_d_letto_posa.text()
         #		d_letto_attesa = self.lineEdit_d_letto_attesa.text()
         #		toro = self.lineEdit_toro.text()
@@ -621,33 +627,20 @@ class pyarchinit_Geophysics(QDialog, Ui_DialogGeo):
         ##bibliografia
         bibliografia = self.table2dict("self.tableWidget_bibliografia")
 
+
+
         try:
-            """
-            if self.lineEdit_settore.text() == "":
-                settore = None
+            if self.lineEdit_quota.text() == "":
+                quota = None
             else:
-                settore = float(self.lineEdit_settore.text())
+                quota = float(self.lineEdit_quota.text())
 
-            if self.comboBox_area.text() == "":
-                comboBox_area = None
-            else:
-                comboBox_area = float(self.comboBox_area.text())
 
-            if self.lineEdit_griglia.text() == "":
-                griglia = None
+            if self.lineEdit_pdc.text() == "":
+                pdc = None
             else:
-                griglia = float(self.lineEdit_griglia.text())
+                pdc = float(self.lineEdit_pdc.text())
 
-            if self.textEdit_descrizione.text() == "":
-                descrizione = None
-            else:
-                descrizione = float(self.textEdit_text.text())
-
-            if self.textEdit_interpretazione.text() == "":
-                interpretazione = None
-            else:
-                interpretazione = float(self.textEdit_interpretazione.text())
-                """
             if self.lineEdit_x.text() == "":
                 x = None
             else:
@@ -672,8 +665,8 @@ class pyarchinit_Geophysics(QDialog, Ui_DialogGeo):
                 unicode(self.lineEdit_settore.text()), # 6 settore
                 unicode(self.lineEdit_area.text()),  # 6 - descrizione
                 unicode(self.lineEdit_griglia.text()),  # 2 - griglia
-                unicode(self.lineEdit_pdc.text()),  # 11 - piano di campagna
-                unicode(self.lineEdit_quota.text()),  # 12 - quota
+                pdc,
+                quota,
                 unicode(self.textEdit_descrizione.toPlainText()), # 7 - descrizione
                 unicode(self.textEdit_interpretazione.toPlainText), # 8 - interpretazione
                 unicode(self.comboBox_schedatore.currentText()),  # 9 - schedatore
@@ -688,6 +681,8 @@ class pyarchinit_Geophysics(QDialog, Ui_DialogGeo):
                 y,
                 z,
                 unicode(self.dateEdit_date.currentText()),  # 16 - risoluzione
+                str(bibliografia),  # 16 - rif biblio
+
             )
 
             try:
@@ -713,7 +708,6 @@ class pyarchinit_Geophysics(QDialog, Ui_DialogGeo):
     # bibliografia
     def on_pushButton_insert_row_bibliografia_pressed(self):
         self.insert_new_row('self.tableWidget_bibliografia')
-
     def on_pushButton_remove_row_bibliografia_pressed(self):
         self.remove_row('self.tableWidget_bibliografia')
 
@@ -962,6 +956,7 @@ class pyarchinit_Geophysics(QDialog, Ui_DialogGeo):
                     self.setlineEditEnable(["self.lineEdit_griglia"], "False")
                     self.settextEditEnable(["self.textEdit_descrizione"], "True")
                     self.setTableEnable(["self.tableWidget_bibliografia"], "True")
+
                     check_for_buttons = 1
 
                 else:
@@ -1166,24 +1161,24 @@ class pyarchinit_Geophysics(QDialog, Ui_DialogGeo):
 
         self.comboBox_sito.setEditText("")          # 1 - Sito
         self.lineEdit_progetto.clear()              # 2 - progetto
-        self.comboBox_metodo.setEditText()          # 3 - metodo
-        self.lineEdit_anno.clear("")                # 4 - anno
-        self.lineEdit_settore.clear("")             # 5 - settore
+        self.comboBox_metodo.setEditText("")        # 3 - metodo
+        self.lineEdit_anno.clear()                # 4 - anno
+        self.lineEdit_settore.clear()             # 5 - settore
         self.comboBox_area.setEditText("")          # 9 - area
         self.lineEdit_griglia.clear()               # 6 - griglia
         self.lineEdit_pdc.clear()                   # 7 - piano di campagna
         self.lineEdit_quota.clear()                 # 8 - quota assoluta
         self.textEdit_descrizione.clear()           # 10 - descrizione
         self.textEdit_interpretazione.clear()       # 11 - interpretazione
-        self.comboBox_schedatore.setEditText()      # 12 - schedatore
+        self.comboBox_schedatore.setEditText("")      # 12 - schedatore
         self.lineEdit_data_schedatura.clear()       # 13 - data schedatura
-        self.comboBox_modello.setEditText()         # 14 - modello GPR
-        self.comboBox_velocita.setEditText()        # 15 - velocita'
+        self.comboBox_modello.setEditText("")         # 14 - modello GPR
+        self.comboBox_velocita.setEditText("")        # 15 - velocita'
         self.lineEdit_x.clear()                     # 16 - asse delle x
         self.lineEdit_y.clear()                     # 17 - asse delle y
         self.lineEdit_z.clear()                     # 18 - z (valore nullo)
-        self.dateEdit_date.setEditText()            # 19 - data del progetto
-        self.comboBox_frequenza.setEditText()       # 20 - frequenza antenna
+        self.dateEdit_date.setEditText("")            # 19 - data del progetto
+        self.comboBox_frequenza.setEditText("")       # 20 - frequenza antenna
         self.lineEdit_risoluzione.clear()           # 21 - risoluzione
         self.lineEdit_max_prof.clear()              # 22 - massima profondita'
         self.lineEdit_range.clear()                 # 23 - range
@@ -1221,8 +1216,8 @@ class pyarchinit_Geophysics(QDialog, Ui_DialogGeo):
             self.lineEdit_range.setText(str(self.DATA_LIST[self.rec_num].range))                # 23 - range
 
 
-            self.tableInsertData("self.tableWidget_bibliografia",
-                                 self.DATA_LIST[self.rec_num].bibliografia)  # 24 - bibliografia
+            self.tableInsertData("self.tableWidget_bibliografia", self.DATA_LIST[self.rec_num].bibliografia)  # 24 - bibliografia
+
             """
             if self.DATA_LIST[self.rec_num].progetto == None:            # 9 - d_letto_posa
                 self.lineEdit_progetto.setText("")
@@ -1295,6 +1290,7 @@ class pyarchinit_Geophysics(QDialog, Ui_DialogGeo):
 
         # bibliografia
         bibliografia = self.table2dict("self.tableWidget_bibliografia")
+
         """
         ##Dimensioni
         if self.lineEdit_d_letto_posa.text() == "":
@@ -1356,7 +1352,8 @@ class pyarchinit_Geophysics(QDialog, Ui_DialogGeo):
             unicode(self.comboBox_frequenza.currentText()), # 20 - frequenza
             unicode(self.lineEdit_risoluzione.text()),      # 21 - risoluzione
             unicode(self.lineEdit_max_prof.text()),         # 22 - massima profondità
-            unicode(self.lineEdit_range.text()),            # 23 - range
+            unicode(self.lineEdit_range.text()),
+            unicode(bibliografia),       # 23 - range
         ]
 
     def enable_button(self, n):

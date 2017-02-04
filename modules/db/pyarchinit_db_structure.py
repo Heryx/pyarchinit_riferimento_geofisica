@@ -906,6 +906,7 @@ class Geophysics_table:
 	Column('risoluzione', Float(2,2)),              #21
 	Column('max_prof', String(10)),                 #22
 	Column('range', String(10)),                    #23
+    Column('bibliografia', Text),
 
 
 	# explicit/composite unique constraint.  'name' is optional.

@@ -26,6 +26,9 @@ from PyQt4 import QtCore, QtGui
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 import PyQt4.QtGui
+
+from modules.utility.pyarchinit_error_check import Error_check
+
 try:
 	from qgis.core import *
 	from qgis.gui import *
@@ -236,9 +239,9 @@ class pyarchinit_Inventario_Lapidei(QDialog, Ui_DialogSchedaLapidei):
 		self.widget.canvas.draw()
 
 	def on_pushButton_connect_pressed(self):
-		from pyarchinit_conn_strings import *
+		import pyarchinit_conn_strings
 		#self.setComboBoxEditable(["self.comboBox_sito"],1)
-		conn = Connection()
+		conn = pyarchinit_conn_strings.Connection()
 		conn_str = conn.conn_str()
 
 		test_conn = conn_str.find('sqlite')
