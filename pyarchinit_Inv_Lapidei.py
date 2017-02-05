@@ -27,7 +27,6 @@ from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 import PyQt4.QtGui
 
-from modules.utility.pyarchinit_error_check import Error_check
 
 try:
 	from qgis.core import *
