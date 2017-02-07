@@ -160,7 +160,8 @@ class pyarchinit_Geophysics(QDialog, Ui_DialogGeo):
         "frequenza",
         "risoluzione",
         "max_prof",
-        "range"
+        "range",
+        "bibliografia"
     ]
 
     TABLE_FIELDS_UPDATE = [
@@ -186,7 +187,8 @@ class pyarchinit_Geophysics(QDialog, Ui_DialogGeo):
         "frequenza",
         "risoluzione",
         "max_prof",
-        "range"
+        "range",
+        "bibliografia"
     ]
 
     SEARCH_DICT_TEMP = ""
@@ -544,6 +546,7 @@ class pyarchinit_Geophysics(QDialog, Ui_DialogGeo):
                 unicode(self.DATA_LIST[i].risoluzione),     #21 - risoluzione
                 unicode(self.DATA_LIST[i].max_prof),        #22 - massima profondità
                 unicode(self.DATA_LIST[i].range),           #23 - range
+                unicode(self.DATA_LIST[i].bibliografia),
             ])
         return data_list
     """
@@ -666,28 +669,29 @@ class pyarchinit_Geophysics(QDialog, Ui_DialogGeo):
             data = self.DB_MANAGER.insert__geophysics_values(
                 self.DB_MANAGER.max_num_id(self.MAPPER_TABLE_CLASS, self.ID_TABLE) + 1,  # 0 - IDsito
                 unicode(self.comboBox_sito.currentText()),  # 1 - Sito
-                unicode(self.lineEdit_progetto.text()),  # 3 - progetto
-                unicode(self.comboBox_metodo.currentText()),  # 4 - metodo
-                unicode(self.lineEdit_anno.text()),  # 5 - definizione
-                unicode(self.lineEdit_settore.text()), # 6 settore
+                unicode(self.lineEdit_progetto.text()),  # 2 - progetto
+                unicode(self.comboBox_metodo.currentText()),  # 3 - metodo
+                unicode(self.lineEdit_anno.text()),  # 4 - definizione
+                unicode(self.lineEdit_settore.text()), # 5 settore
                 unicode(self.lineEdit_area.text()),  # 6 - descrizione
-                unicode(self.lineEdit_griglia.text()),  # 2 - griglia
-                unicode(self.lineEdit_pdc.text()),  # 11 - piano di campagna
-                unicode(self.lineEdit_quota.text()),  # 12 - quota
-                unicode(self.textEdit_descrizione.toPlainText()), # 7 - descrizione
-                unicode(self.textEdit_interpretazione.toPlainText), # 8 - interpretazione
-                unicode(self.comboBox_schedatore.currentText()),  # 9 - schedatore
-                unicode(self.lineEdit_data_schedatura.text()), # 10 - data schedatura
-                unicode(self.comboBox_modello.currentText()), #13 - modello
-                unicode(self.comboBox_velocita.currentText()), #14 - velocita'
-                unicode(self.comboBox_frequenza.currentText()), #15 - frequenza
-                unicode(self.lineEdit_risoluzione.text()), #16 - risoluzione
-                unicode(self.lineEdit_max_prof.text()),  # 17 - max_prof
-                unicode(self.lineEdit_range.text()),  # 18 - range
-                x,
-                y,
-                z,
-                unicode(self.dateEdit_date.currentText()),  # 16 - risoluzione
+                unicode(self.lineEdit_griglia.text()),  # 7 - griglia
+                unicode(self.lineEdit_pdc.text()),  # 8 - piano di campagna
+                unicode(self.lineEdit_quota.text()),  # 9 - quota
+                unicode(self.textEdit_descrizione.toPlainText()), # 10 - descrizione
+                unicode(self.textEdit_interpretazione.toPlainText), # 11 - interpretazione
+                unicode(self.comboBox_schedatore.currentText()),  # 12 - schedatore
+                unicode(self.lineEdit_data_schedatura.text()), # 13 - data schedatura
+                unicode(self.comboBox_modello.currentText()), #14 - modello
+                unicode(self.comboBox_velocita.currentText()), #15 - velocita'
+                unicode(self.comboBox_frequenza.currentText()), #16 - frequenza
+                unicode(self.lineEdit_risoluzione.text()), #17 - risoluzione
+                unicode(self.lineEdit_max_prof.text()),  # 18 - max_prof
+                unicode(self.lineEdit_range.text()),  # 19 - range
+                x,  #20
+                y,  #21
+                z,  #22
+                unicode(self.dateEdit_date.currentText()),  # 13 - risoluzione
+                str(bibliografia),
             )
 
             try:
@@ -929,12 +933,16 @@ class pyarchinit_Geophysics(QDialog, Ui_DialogGeo):
                 self.TABLE_FIELDS[10]: "'" + unicode(self.textEdit_interpretazione.toPlainText()) + "'",
                 self.TABLE_FIELDS[11]: "'" + unicode(self.comboBox_schedatore.currentText()) + "'",
                 self.TABLE_FIELDS[12]: "'" + unicode(self.lineEdit_data_schedatura.text()) + "'",
-                self.TABLE_FIELDS[13]: "'" + unicode(self.textEdit_descrizione.text()) + "'",
-                self.TABLE_FIELDS[14]: "'" + unicode(self.lineEdit_lavorazione_e_stato_di_conservazione.text()) + "'",
-                self.TABLE_FIELDS[15]: "'" + unicode(self.lineEdit_confronti.text()) + "'",
-                self.TABLE_FIELDS[16]: "'" + unicode(self.lineEdit_cronologia.text()) + "'",
-                self.TABLE_FIELDS[17]: "'" + unicode(self.lineEdit_bibliografia.text()) + "'",
-                self.TABLE_FIELDS[18]: "'" + unicode(self.comboBox_compilatore.currentText()) + "'",
+                self.TABLE_FIELDS[13]: "'" + unicode(self.comboBox_modello.text()) + "'",
+                self.TABLE_FIELDS[14]: "'" + unicode(self.comboBox_velocita.text()) + "'",
+                self.TABLE_FIELDS[15]: "'" + unicode(self.comboBox_frequenza.text()) + "'",
+                self.TABLE_FIELDS[16]: "'" + unicode(self.lineEdit_risoluzione.text()) + "'",
+                self.TABLE_FIELDS[17]: "'" + unicode(self.lineEdit_max_prof.text()) + "'",
+                self.TABLE_FIELDS[18]: "'" + unicode(self.lineEdit_range.currentText()) + "'",
+                self.TABLE_FIELDS[19]: x,
+                self.TABLE_FIELDS[21]: y,
+                self.TABLE_FIELDS[20]: z,
+                self.TABLE_FIELDS[22]: "'" + unicode(self.dateEdit_date()) + "'",
             }
 
             u = Utility()
