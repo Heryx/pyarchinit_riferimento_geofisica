@@ -38,7 +38,7 @@ except:
 from datetime import date
 from psycopg2 import *
 
-#from  pyarchinit_exp_Geophysics_pdf import *
+# from  pyarchinit_exp_Geophysics_pdf import *
 
 # --import pyArchInit modules--#
 # from  pyarchinit_geophysics_ui import Ui_DialogGeo
@@ -103,11 +103,11 @@ class pyarchinit_Geophysics(QDialog, Ui_DialogGeo):
         "X": 'x',
         "Y": 'y',
         "Z": 'z',
-        "Data":"date",
-        "Frequenza":"frequenza",
-        "Risoluzione":"risoluzione",
-        "Massima Profondita'":"max_prof",
-        "Range(ns)":"range"
+        "Data": "date",
+        "Frequenza": "frequenza",
+        "Risoluzione": "risoluzione",
+        "Massima Profondita'": "max_prof",
+        "Range(ns)": "range"
     }
 
     SORT_ITEMS = [
@@ -357,6 +357,7 @@ class pyarchinit_Geophysics(QDialog, Ui_DialogGeo):
         elif mode == 1:
             self.iconListWidget.clear()
         """
+
     """
     def openWide_image(self):
         items = self.iconListWidget.selectedItems()
@@ -378,6 +379,7 @@ class pyarchinit_Geophysics(QDialog, Ui_DialogGeo):
             dlg.show_image(unicode(file_path))  # item.data(QtCore.Qt.UserRole).toString()))
             dlg.exec_()
     """
+
     def charge_list(self):
         sito_vl = self.UTILITY.tup_2_list_III(self.DB_MANAGER.group_by('site_table', 'sito', 'SITE'))
         try:
@@ -521,34 +523,35 @@ class pyarchinit_Geophysics(QDialog, Ui_DialogGeo):
     def generate_list_pdf(self):
         data_list = []
         for i in range(len(self.DATA_LIST)):
-            data_list.append([
-                str(self.DATA_LIST[i].id_grid),             # 0 - id_invlap
-                unicode(self.DATA_LIST[i].sito),            # 1- sito
-                unicode(self.DATA_LIST[i].progetto),        # 2- progetto
-                unicode(self.DATA_LIST[i].metodo),          # 3 - metodo
-                unicode(self.DATA_LIST[i].anno),            # 4 - anno
-                unicode(self.DATA_LIST[i].settore),         # 5 - settore
-                unicode(self.DATA_LIST[i].area),            # 6 - area
-                unicode(self.DATA_LIST[i].griglia),         # 7 - griglia
-                unicode(self.DATA_LIST[i].pdc),               # 8 - pdc
-                unicode(self.DATA_LIST[i].quota),             # 9 - quota
-                unicode(self.DATA_LIST[i].descrizione),     # 10 - descrizione
-                unicode(self.DATA_LIST[i].interpretazione), # 11 - interpretazione
-                unicode(self.DATA_LIST[i].schedatore),      # 12 - schedatore
-                unicode(self.DATA_LIST[i].data_schedatura), # 13 - data_schedatura
-                unicode(self.DATA_LIST[i].modello),         # 14 - modello
-                unicode(self.DATA_LIST[i].velocita),        # 15 - velocita
-                unicode(self.DATA_LIST[i].x),               # 16 - x
-                unicode(self.DATA_LIST[i].x),               # 17 - y
-                unicode(self.DATA_LIST[i].z),               # 18 - z
-                unicode(self.DATA_LIST[i].date),            # 19 - date
-                unicode(self.DATA_LIST[i].frequenza),       #20 - frequenza
-                unicode(self.DATA_LIST[i].risoluzione),     #21 - risoluzione
-                unicode(self.DATA_LIST[i].max_prof),        #22 - massima profondità
-                unicode(self.DATA_LIST[i].range),           #23 - range
+            data_list.append({
+                str(self.DATA_LIST[i].id_grid),  # 0 - id_invlap
+                unicode(self.DATA_LIST[i].sito),  # 1- sito
+                unicode(self.DATA_LIST[i].progetto),  # 2- progetto
+                unicode(self.DATA_LIST[i].metodo),  # 3 - metodo
+                unicode(self.DATA_LIST[i].anno),  # 4 - anno
+                unicode(self.DATA_LIST[i].settore),  # 5 - settore
+                unicode(self.DATA_LIST[i].area),  # 6 - area
+                unicode(self.DATA_LIST[i].griglia),  # 7 - griglia
+                unicode(self.DATA_LIST[i].pdc),  # 8 - pdc
+                unicode(self.DATA_LIST[i].quota),  # 9 - quota
+                unicode(self.DATA_LIST[i].descrizione),  # 10 - descrizione
+                unicode(self.DATA_LIST[i].interpretazione),  # 11 - interpretazione
+                unicode(self.DATA_LIST[i].schedatore),  # 12 - schedatore
+                unicode(self.DATA_LIST[i].data_schedatura),  # 13 - data_schedatura
+                unicode(self.DATA_LIST[i].modello),  # 14 - modello
+                unicode(self.DATA_LIST[i].velocita),  # 15 - velocita
+                unicode(self.DATA_LIST[i].x),  # 16 - x
+                unicode(self.DATA_LIST[i].x),  # 17 - y
+                unicode(self.DATA_LIST[i].z),  # 18 - z
+                unicode(self.DATA_LIST[i].date),  # 19 - date
+                unicode(self.DATA_LIST[i].frequenza),  # 20 - frequenza
+                unicode(self.DATA_LIST[i].risoluzione),  # 21 - risoluzione
+                unicode(self.DATA_LIST[i].max_prof),  # 22 - massima profondità
+                unicode(self.DATA_LIST[i].range),  # 23 - range
                 unicode(self.DATA_LIST[i].bibliografia),
-            ])
+            })
         return data_list
+
     """
     def on_pushButton_exp_pdf_sheet_pressed(self):
         if self.records_equal_check() == 1:
@@ -560,6 +563,7 @@ class pyarchinit_Geophysics(QDialog, Ui_DialogGeo):
         data_list = self.generate_list_pdf()
         Geophysics_pdf_sheet.build_Geophysics_sheets(data_list)
     """
+
     # ********************************************************************************
     ##			###cerca le singole area/us presenti in quella cassa
     ##			res_tip_reperto = self.DB_MANAGER.query_distinct('INVENTARIO_MATERIALI',[['sito','"Sito archeologico"'], ['nr_cassa',cassa]], ['tipo_reperto'])
@@ -617,7 +621,6 @@ class pyarchinit_Geophysics(QDialog, Ui_DialogGeo):
                                 QMessageBox.Ok)
             test = 1
 
-
         return test
 
     def insert_new_rec(self):
@@ -672,24 +675,24 @@ class pyarchinit_Geophysics(QDialog, Ui_DialogGeo):
                 unicode(self.lineEdit_progetto.text()),  # 2 - progetto
                 unicode(self.comboBox_metodo.currentText()),  # 3 - metodo
                 unicode(self.lineEdit_anno.text()),  # 4 - definizione
-                unicode(self.lineEdit_settore.text()), # 5 settore
+                unicode(self.lineEdit_settore.text()),  # 5 settore
                 unicode(self.lineEdit_area.text()),  # 6 - descrizione
                 unicode(self.lineEdit_griglia.text()),  # 7 - griglia
                 unicode(self.lineEdit_pdc.text()),  # 8 - piano di campagna
                 unicode(self.lineEdit_quota.text()),  # 9 - quota
-                unicode(self.textEdit_descrizione.toPlainText()), # 10 - descrizione
-                unicode(self.textEdit_interpretazione.toPlainText), # 11 - interpretazione
+                unicode(self.textEdit_descrizione.toPlainText()),  # 10 - descrizione
+                unicode(self.textEdit_interpretazione.toPlainText),  # 11 - interpretazione
                 unicode(self.comboBox_schedatore.currentText()),  # 12 - schedatore
-                unicode(self.lineEdit_data_schedatura.text()), # 13 - data schedatura
-                unicode(self.comboBox_modello.currentText()), #14 - modello
-                unicode(self.comboBox_velocita.currentText()), #15 - velocita'
-                unicode(self.comboBox_frequenza.currentText()), #16 - frequenza
-                unicode(self.lineEdit_risoluzione.text()), #17 - risoluzione
+                unicode(self.lineEdit_data_schedatura.text()),  # 13 - data schedatura
+                unicode(self.comboBox_modello.currentText()),  # 14 - modello
+                unicode(self.comboBox_velocita.currentText()),  # 15 - velocita'
+                unicode(self.comboBox_frequenza.currentText()),  # 16 - frequenza
+                unicode(self.lineEdit_risoluzione.text()),  # 17 - risoluzione
                 unicode(self.lineEdit_max_prof.text()),  # 18 - max_prof
                 unicode(self.lineEdit_range.text()),  # 19 - range
-                x,  #20
-                y,  #21
-                z,  #22
+                x,  # 20
+                y,  # 21
+                z,  # 22
                 unicode(self.dateEdit_date.currentText()),  # 13 - risoluzione
                 str(bibliografia),
             )
@@ -888,36 +891,20 @@ class pyarchinit_Geophysics(QDialog, Ui_DialogGeo):
                                 QMessageBox.Ok)
         else:
             ##
-            if self.lineEdit_griglia.text() != "":
-                griglia = int(self.lineEdit_griglia.text())
+            if self.lineEdit_x.text() != "":
+                x = int(self.lineEdit_x.text())
             else:
-                griglia = ""
+                x = ""
 
-            if self.lineEdit_progetto.text() != "":
-                progetto = int(self.lineEdit_progetto.text())
+            if self.lineEdit_y.text() != "":
+                y = int(self.lineEdit_y.text())
             else:
-                progetto = ""
+                y = ""
 
-            if self.lineEdit_anno.text() != "":
-                anno = int(self.lineEdit_anno.text())
+            if self.lineEdit_z.text() != "":
+                z = int(self.lineEdit_z.text())
             else:
-                anno = ""
-
-            if self.lineEdit_settore.text() != "":
-                settore = int(self.lineEdit_settore.text())
-            else:
-                settore = ""
-
-            if self.lineEdit_area.text() != "":
-                area = int(self.lineEdit_area.text())
-            else:
-                area = ""
-
-            if self.lineEdit_date.text() != "":
-                date = int(self.lineEdit_date.text())
-            else:
-                date = ""
-
+                z = ""
 
             search_dict = {
                 self.TABLE_FIELDS[0]: "'" + unicode(self.comboBox_sito.currentText()) + "'",
@@ -996,7 +983,7 @@ class pyarchinit_Geophysics(QDialog, Ui_DialogGeo):
                     self.setComboBoxEditable(["self.comboBox_sito"], 1)
                     self.setComboBoxEnable(['self.comboBox_sito'], "False")
                     self.setlineEditEnable(['self.lineEdit_griglia'], "False")
-                    self.setTableEnable(["self.tableWidget_descrizione"], "True")   #
+                    self.setTableEnable(["self.tableWidget_descrizione"], "True")  #
                     self.setTableEnable(["self.tableWidget_bibliografia"], "True")
                     check_for_buttons = 1
 
@@ -1172,29 +1159,31 @@ class pyarchinit_Geophysics(QDialog, Ui_DialogGeo):
     def empty_fields(self):
         bibliografia_row_count = self.tableWidget_bibliografia.rowCount()
 
-        self.comboBox_sito.setEditText("")          # 1 - Sito
-        self.lineEdit_progetto.clear()              # 2 - progetto
-        self.comboBox_metodo.setEditText()          # 3 - metodo
-        self.lineEdit_anno.clear("")                # 4 - anno
-        self.lineEdit_settore.clear("")             # 5 - settore
-        self.comboBox_area.setEditText("")          # 9 - area
-        self.lineEdit_griglia.clear()               # 6 - griglia
-        self.lineEdit_pdc.clear()                   # 7 - piano di campagna
-        self.lineEdit_quota.clear()                 # 8 - quota assoluta
-        self.textEdit_descrizione.clear()           # 10 - descrizione
-        self.textEdit_interpretazione.clear()       # 11 - interpretazione
-        self.comboBox_schedatore.setEditText()      # 12 - schedatore
-        self.lineEdit_data_schedatura.clear()       # 13 - data schedatura
-        self.comboBox_modello.setEditText()         # 14 - modello GPR
-        self.comboBox_velocita.setEditText()        # 15 - velocita'
-        self.lineEdit_x.clear()                     # 16 - asse delle x
-        self.lineEdit_y.clear()                     # 17 - asse delle y
-        self.lineEdit_z.clear()                     # 18 - z (valore nullo)
-        self.dateEdit_date.setEditText()            # 19 - data del progetto
-        self.comboBox_frequenza.setEditText()       # 20 - frequenza antenna
-        self.lineEdit_risoluzione.clear()           # 21 - risoluzione
-        self.lineEdit_max_prof.clear()              # 22 - massima profondita'
-        self.lineEdit_range.clear()                 # 23 - range
+        self.comboBox_sito.setEditText("")  # 1 - Sito
+        self.lineEdit_progetto.clear()  # 2 - progetto
+        self.comboBox_metodo.setEditText()  # 3 - metodo
+        self.lineEdit_anno.clear("")  # 4 - anno
+        self.lineEdit_settore.clear("")  # 5 - settore
+        self.comboBox_area.setEditText("")  # 9 - area
+        self.lineEdit_griglia.clear()  # 6 - griglia
+        self.lineEdit_pdc.clear()  # 7 - piano di campagna
+        self.lineEdit_quota.clear()  # 8 - quota assoluta
+        self.textEdit_descrizione.clear()  # 10 - descrizione
+        self.textEdit_interpretazione.clear()  # 11 - interpretazione
+        self.comboBox_schedatore.setEditText("")  # 12 - schedatore
+        self.lineEdit_data_schedatura.clear()  # 13 - data schedatura
+        self.comboBox_modello.setEditText("")  # 14 - modello GPR
+        self.comboBox_velocita.setEditText("")  # 15 - velocita'
+        self.comboBox_frequenza.setEditText("")  # 20 - frequenza antenna
+        self.lineEdit_risoluzione.clear()  # 21 - risoluzione
+        self.lineEdit_max_prof.clear()  # 22 - massima profondita'
+        self.lineEdit_range.clear()  # 23 - range
+
+        self.lineEdit_x.clear()  # 16 - asse delle x
+        self.lineEdit_y.clear()  # 17 - asse delle y
+        self.lineEdit_z.clear()  # 18 - z (valore nullo)
+
+        self.dateEdit_date.setEditText("")  # 19 - data del progetto
 
         for i in range(bibliografia_row_count):
             self.tableWidget_bibliografia.removeRow(0)
@@ -1204,91 +1193,49 @@ class pyarchinit_Geophysics(QDialog, Ui_DialogGeo):
         self.rec_num = n
         # QMessageBox.warning(self, "check fill fields", str(self.rec_num),  QMessageBox.Ok)
         try:
-            unicode(self.comboBox_sito.setEditText(self.DATA_LIST[self.rec_num].sito))          # 1 - Sito
-            self.lineEdit_progetto.setText(str(self.DATA_LIST[self.rec_num].progetto))          # 2 - progetto
-            unicode(self.comboBox_metodo.setEditText(self.DATA_LIST[self.rec_num].metodo))      # 3 - metodo
-            self.lineEdit_anno.setText(str(self.DATA_LIST[self.rec_num].anno))                  # 4 - anno
-            self.lineEdit_settore.setText(str(self.DATA_LIST[self.rec_num].settore))            # 5 - settore
-            unicode(self.comboBox_area.setEditText(self.DATA_LIST[self.rec_num].area))          # 6 - area
-            self.lineEdit_griglia.setText(str(self.DATA_LIST[self.rec_num].griglia))            # 7 - griglia
-            self.lineEdit_pdc.setText(str(self.DATA_LIST[self.rec_num].pdc))                    # 8 - piano di campagna
-            self.lineEdit_quota.setText(str(self.DATA_LIST[self.rec_num].quota))                # 9 - quota assoluta
-            unicode(self.textEdit_descrizione.setText(self.DATA_LIST[self.rec_num].descrizione))# 10 - descrizione
+            unicode(self.comboBox_sito.setEditText(self.DATA_LIST[self.rec_num].sito))  # 1 - Sito
+            self.lineEdit_progetto.setText(str(self.DATA_LIST[self.rec_num].progetto))  # 2 - progetto
+            unicode(self.comboBox_metodo.setEditText(self.DATA_LIST[self.rec_num].metodo))  # 3 - metodo
+            self.lineEdit_anno.setText(str(self.DATA_LIST[self.rec_num].anno))  # 4 - anno
+            self.lineEdit_settore.setText(str(self.DATA_LIST[self.rec_num].settore))  # 5 - settore
+            unicode(self.comboBox_area.setEditText(self.DATA_LIST[self.rec_num].area))  # 6 - area
+            self.lineEdit_griglia.setText(str(self.DATA_LIST[self.rec_num].griglia))  # 7 - griglia
+            self.lineEdit_pdc.setText(str(self.DATA_LIST[self.rec_num].pdc))  # 8 - piano di campagna
+            self.lineEdit_quota.setText(str(self.DATA_LIST[self.rec_num].quota))  # 9 - quota assoluta
+            unicode(self.textEdit_descrizione.setText(self.DATA_LIST[self.rec_num].descrizione))  # 10 - descrizione
             unicode(self.textEdit_interpretazione.setText(self.DATA_LIST[self.rec_num].interpretazione))  # 11 - interpretazione
-            unicode(self.comboBox_schedatore.setEditText(self.DATA_LIST[self.rec_num].schedatore))        # 12 - schedatore
-            self.lineEdit_data_schedatura.setText(str(self.DATA_LIST[self.rec_num].data_schedatura))      # 13 - data schedatura
-            unicode(self.comboBox_modello.setEditText(self.DATA_LIST[self.rec_num].modello))        # 14 - modello
-            unicode(self.comboBox_velocita.setEditText(self.DATA_LIST[self.rec_num].velocita))      # 15 - velocita'
-            self.lineEdit_x.setText(str(self.DATA_LIST[self.rec_num].x))                        # 16 - asse delle x
-            self.lineEdit_y.setText(str(self.DATA_LIST[self.rec_num].y))                        # 17 - asse delle y
-            self.lineEdit_z.setText(str(self.DATA_LIST[self.rec_num].z))                        # 18 - asse delle z
-            unicode(self.dateEdit_date.setEditText(self.DATA_LIST[self.rec_num].date))          # 19 - data progetto
-            self.lineEdit_risoluzione.setText(str(self.DATA_LIST[self.rec_num].risoluzione))    # 21 - risoluzione
-            unicode(self.comboBox_frequenza.setEditText(self.DATA_LIST[self.rec_num].frequenza))# 20 - frequenza
-            self.lineEdit_max_prof.setText(str(self.DATA_LIST[self.rec_num].max_prof))          # 22 - massima profondità
-            self.lineEdit_range.setText(str(self.DATA_LIST[self.rec_num].range))                # 23 - range
-
-
+            unicode(self.comboBox_schedatore.setEditText(self.DATA_LIST[self.rec_num].schedatore))  # 12 - schedatore
+            self.lineEdit_data_schedatura.setText(str(self.DATA_LIST[self.rec_num].data_schedatura))  # 13 - data schedatura
+            unicode(self.comboBox_modello.setEditText(self.DATA_LIST[self.rec_num].modello))  # 14 - modello
+            unicode(self.comboBox_velocita.setEditText(self.DATA_LIST[self.rec_num].velocita))  # 15 - velocita'
+            # self.lineEdit_x.setText(str(self.DATA_LIST[self.rec_num].x))                        # 16 - asse delle x
+            # self.lineEdit_y.setText(str(self.DATA_LIST[self.rec_num].y))                        # 17 - asse delle y
+            # self.lineEdit_z.setText(str(self.DATA_LIST[self.rec_num].z))                        # 18 - asse delle z
+            unicode(self.dateEdit_date.setEditText(self.DATA_LIST[self.rec_num].date))  # 19 - data progetto
+            self.lineEdit_risoluzione.setText(str(self.DATA_LIST[self.rec_num].risoluzione))  # 21 - risoluzione
+            unicode(self.comboBox_frequenza.setEditText(self.DATA_LIST[self.rec_num].frequenza))  # 20 - frequenza
+            self.lineEdit_max_prof.setText(str(self.DATA_LIST[self.rec_num].max_prof))  # 22 - massima profondità
+            self.lineEdit_range.setText(str(self.DATA_LIST[self.rec_num].range))  # 23 - range
             self.tableInsertData("self.tableWidget_bibliografia",
                                  self.DATA_LIST[self.rec_num].bibliografia)  # 24 - bibliografia
-            """
-            if self.DATA_LIST[self.rec_num].progetto == None:            # 9 - d_letto_posa
-                self.lineEdit_progetto.setText("")
-            else:
-                self.lineEdit_progetto.setText(str(self.DATA_LIST[self.rec_num].progetto))
 
-            if self.DATA_LIST[self.rec_num].metodo == None:  # 10 - d_letto_attesa
-                self.lineEdit_metodo.setText("")
+            if self.DATA_LIST[self.rec_num].x == None:  # 9 - d_letto_posa
+                self.lineEdit_x.setText("")
             else:
-                self.lineEdit_metodo.setText(str(self.DATA_LIST[self.rec_num].metodo))
+                self.lineEdit_x.setText(str(self.DATA_LIST[self.rec_num].x))
 
-            if self.DATA_LIST[self.rec_num].anno == None:  # 11 - toro
-                self.lineEdit_anno.setText("")
+            if self.DATA_LIST[self.rec_num].y == None:  # 10 - d_letto_attesa
+                self.lineEdit_y.setText("")
             else:
-                self.lineEdit_anno.setText(str(self.DATA_LIST[self.rec_num].anno))
+                self.lineEdit_y.setText(str(self.DATA_LIST[self.rec_num].y))
 
-            if self.DATA_LIST[self.rec_num].settore == None:  # 12 - settore
-                self.lineEdit_settore.setText("")
+            if self.DATA_LIST[self.rec_num].z == None:  # 11 - toro
+                self.lineEdit_z.setText("")
             else:
-                self.lineEdit_settore.setText(str(self.DATA_LIST[self.rec_num].settore))
+                self.lineEdit_z.setText(str(self.DATA_LIST[self.rec_num].z))
 
-            if self.DATA_LIST[self.rec_num].area == None:  # 13 - larghezza
-                self.lineEdit_area.setText("")
-            else:
-                self.lineEdit_area.setText(str(self.DATA_LIST[self.rec_num].area))
 
-            if self.DATA_LIST[self.rec_num].griglia == None:  # 14 - lunghezza
-                self.lineEdit_griglia.setText("")
-            else:
-                self.lineEdit_griglia.setText(str(self.DATA_LIST[self.rec_num].griglia))
-
-            if self.DATA_LIST[self.rec_num].pdc == None:  # 15 - h
-                self.lineEdit_pdc.setText("")
-            else:
-                self.lineEdit_pdc.setText(str(self.DATA_LIST[self.rec_num].pdc))
-
-            if self.DATA_LIST[self.rec_num].quota == None:
-                self.lineEdit_quota.setText("")
-            else:
-                self.lineEdit_quota.setText(str(self.DATA_LIST[self.rec_num].quota))
-
-            if self.DATA_LIST[self.rec_num].descrizione== None:
-                self.textEdit_descrizione.setText("")
-            else:
-                self.textEdit_quota.setText(str(self.DATA_LIST[self.rec_num].descrizione))
-
-            if self.DATA_LIST[self.rec_num].interpretazione == None:
-                self.textEdit_interpretazione.setText("")
-            else:
-                self.textEdit_interpretazione.setText(str(self.DATA_LIST[self.rec_num].interpretazione))
-
-            if self.DATA_LIST[self.rec_num].schedatore == None:
-                self.comboBox_schedatore.setText("")
-            else:
-                self.comboBox_schedatore.setText(str(self.DATA_LIST[self.rec_num].schedatore))
-            """
-
-                ##########
+#########
         except Exception, e:
             QMessageBox.warning(self, "Errore Fill Fields", str(e), QMessageBox.Ok)
 
@@ -1303,69 +1250,34 @@ class pyarchinit_Geophysics(QDialog, Ui_DialogGeo):
 
         # bibliografia
         bibliografia = self.table2dict("self.tableWidget_bibliografia")
-        """
-        ##Dimensioni
-        if self.lineEdit_d_letto_posa.text() == "":
-            d_letto_posa = None
-        else:
-            d_letto_posa = self.lineEdit_d_letto_posa.text()
 
-        if self.lineEdit_d_letto_attesa.text() == "":
-            d_letto_attesa = None
-        else:
-            d_letto_attesa = self.lineEdit_d_letto_attesa.text()
-
-        if self.lineEdit_toro.text() == "":
-            toro = None
-        else:
-            toro = self.lineEdit_toro.text()
-
-        if self.lineEdit_spessore.text() == "":
-            spessore = None
-        else:
-            spessore = self.lineEdit_spessore.text()
-
-        if self.lineEdit_larghezza.text() == "":
-            larghezza = None
-        else:
-            larghezza = self.lineEdit_larghezza.text()
-
-        if self.lineEdit_lunghezza.text() == "":
-            lunghezza = None
-        else:
-            lunghezza = self.lineEdit_lunghezza.text()
-
-        if self.lineEdit_h.text() == "":
-            h = None
-        else:
-            h = self.lineEdit_h.text()
-        """
         # data
-        self.DATA_LIST_REC_TEMP = [
-            unicode(self.comboBox_sito.currentText()),      # 1 - Sito
-            unicode(self.lineEdit_progetto.text()),         # 2 - progetto
-            unicode(self.comboBox_metodo.currentText()),    # 3 - metodo
-            unicode(self.lineEdit_anno.text()),             # 4 - anno
-            unicode(self.lineEdit_settore.text()),          # 5 - settore
-            unicode(self.comboBox_area.currentText()),      # 6 - area
-            unicode(self.lineEdit_griglia.text()),          # 7 - griglia
-            unicode(self.lineEdit_pdc.text()),              # 8 - pdc
-            unicode(self.lineEdit_quota.text()),            # 9 - quota
+        self.DATA_LIST_REC_TEMP = {
+            unicode(self.comboBox_sito.currentText()),  # 1 - Sito
+            unicode(self.lineEdit_progetto.text()),  # 2 - progetto
+            unicode(self.comboBox_metodo.currentText()),  # 3 - metodo
+            unicode(self.lineEdit_anno.text()),  # 4 - anno
+            unicode(self.lineEdit_settore.text()),  # 5 - settore
+            unicode(self.comboBox_area.currentText()),  # 6 - area
+            unicode(self.lineEdit_griglia.text()),  # 7 - griglia
+            unicode(self.lineEdit_pdc.text()),  # 8 - pdc
+            unicode(self.lineEdit_quota.text()),  # 9 - quota
             unicode(self.textEdit_descrizione.toPlainText()),  # 10 - descrizione
             unicode(self.textEdit_interpretazione.toPlainText()),  # 11 - interpretazione
-            unicode(self.comboBox_schedatore.currentText()),        # 12 - schedatore
+            unicode(self.comboBox_schedatore.currentText()),  # 12 - schedatore
             unicode(self.lineEdit_data_schedatura.text()),  # 13 - data schedatura
-            unicode(self.comboBox_modello.currentText()),   # 14 - modello
+            unicode(self.comboBox_modello.currentText()),  # 14 - modello
             unicode(self.comboBox_velocita.currentText()),  # 15 - velocita
-            unicode(self.lineEdit_x.text()),                # 16 - x
-            unicode(self.lineEdit_y.text()),                # 17 - y
-            unicode(self.lineEdit_z.text()),                # 18 - z
-            unicode(self.dateEdit_date.currentText()),      # 19 - date
-            unicode(self.comboBox_frequenza.currentText()), # 20 - frequenza
-            unicode(self.lineEdit_risoluzione.text()),      # 21 - risoluzione
-            unicode(self.lineEdit_max_prof.text()),         # 22 - massima profondità
-            unicode(self.lineEdit_range.text()),            # 23 - range
-        ]
+            unicode(self.lineEdit_x.text()),  # 16 - x
+            unicode(self.lineEdit_y.text()),  # 17 - y
+            unicode(self.lineEdit_z.text()),  # 18 - z
+            unicode(self.dateEdit_date.currentText()),  # 19 - date
+            unicode(self.comboBox_frequenza.currentText()),  # 20 - frequenza
+            unicode(self.lineEdit_risoluzione.text()),  # 21 - risoluzione
+            unicode(self.lineEdit_max_prof.text()),  # 22 - massima profondità
+            unicode(self.lineEdit_range.text()),  # 23 - range
+            str(bibliografia),
+        }
 
     def enable_button(self, n):
         self.pushButton_connect.setEnabled(n)
