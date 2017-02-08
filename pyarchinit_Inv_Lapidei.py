@@ -363,18 +363,6 @@ class pyarchinit_Inventario_Lapidei(QDialog, Ui_DialogSchedaLapidei):
 		sito_vl.sort()
 		self.comboBox_sito.addItems(sito_vl)
 
-
-		#lista definizione_sito
-#		search_dict = {
-#		'nome_tabella'  : "'"+'inventario_lapidei_table'+"'",
-#		'tipologia_sigla' : "'"+'definizione sito'+"'"
-#		}
-
-#		sito = self.DB_MANAGER.query_bool(search_dict, 'PYARCHINIT_THESAURUS_SIGLE')
-
-#		sito_vl = [ ]
-
-
 	#buttons functions
 
 	def on_pushButton_sort_pressed(self):

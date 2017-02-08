@@ -394,17 +394,6 @@ class pyarchinit_Geophysics(QDialog, Ui_DialogGeo):
         sito_vl.sort()
         self.comboBox_sito.addItems(sito_vl)
 
-    # lista definizione_sito
-    #		search_dict = {
-    #		'nome_tabella'  : "'"+'inventario_lapidei_table'+"'",
-    #		'tipologia_sigla' : "'"+'definizione sito'+"'"
-    #		}
-
-    #		sito = self.DB_MANAGER.query_bool(search_dict, 'PYARCHINIT_THESAURUS_SIGLE')
-
-    #		sito_vl = [ ]
-
-
     # buttons functions
 
     def on_pushButton_sort_pressed(self):
@@ -693,7 +682,7 @@ class pyarchinit_Geophysics(QDialog, Ui_DialogGeo):
                 x,  # 20
                 y,  # 21
                 z,  # 22
-                unicode(self.dateEdit_date.currentText()),  # 13 - risoluzione
+                unicode(self.lineEdit_date.setEditText("")),  # 13 - risoluzione
                 str(bibliografia),
             )
 
@@ -929,7 +918,7 @@ class pyarchinit_Geophysics(QDialog, Ui_DialogGeo):
                 self.TABLE_FIELDS[19]: x,
                 self.TABLE_FIELDS[21]: y,
                 self.TABLE_FIELDS[20]: z,
-                self.TABLE_FIELDS[22]: "'" + unicode(self.dateEdit_date()) + "'",
+                self.TABLE_FIELDS[22]: "'" + unicode(self.lineEdit_date.setText()) + "'",
             }
 
             u = Utility()
@@ -1161,9 +1150,9 @@ class pyarchinit_Geophysics(QDialog, Ui_DialogGeo):
 
         self.comboBox_sito.setEditText("")  # 1 - Sito
         self.lineEdit_progetto.clear()  # 2 - progetto
-        self.comboBox_metodo.setEditText()  # 3 - metodo
-        self.lineEdit_anno.clear("")  # 4 - anno
-        self.lineEdit_settore.clear("")  # 5 - settore
+        self.comboBox_metodo.setEditText("")  # 3 - metodo
+        self.lineEdit_anno.clear()  # 4 - anno
+        self.lineEdit_settore.clear()  # 5 - settore
         self.comboBox_area.setEditText("")  # 9 - area
         self.lineEdit_griglia.clear()  # 6 - griglia
         self.lineEdit_pdc.clear()  # 7 - piano di campagna
@@ -1183,7 +1172,7 @@ class pyarchinit_Geophysics(QDialog, Ui_DialogGeo):
         self.lineEdit_y.clear()  # 17 - asse delle y
         self.lineEdit_z.clear()  # 18 - z (valore nullo)
 
-        self.dateEdit_date.setEditText("")  # 19 - data del progetto
+        self.lineEdit_date.setText("")  # 19 - data del progetto
 
         for i in range(bibliografia_row_count):
             self.tableWidget_bibliografia.removeRow(0)
@@ -1211,7 +1200,7 @@ class pyarchinit_Geophysics(QDialog, Ui_DialogGeo):
             # self.lineEdit_x.setText(str(self.DATA_LIST[self.rec_num].x))                        # 16 - asse delle x
             # self.lineEdit_y.setText(str(self.DATA_LIST[self.rec_num].y))                        # 17 - asse delle y
             # self.lineEdit_z.setText(str(self.DATA_LIST[self.rec_num].z))                        # 18 - asse delle z
-            unicode(self.dateEdit_date.setEditText(self.DATA_LIST[self.rec_num].date))  # 19 - data progetto
+            unicode(self.lineEdit_date.setEditText(self.DATA_LIST[self.rec_num].date))  # 19 - data progetto
             self.lineEdit_risoluzione.setText(str(self.DATA_LIST[self.rec_num].risoluzione))  # 21 - risoluzione
             unicode(self.comboBox_frequenza.setEditText(self.DATA_LIST[self.rec_num].frequenza))  # 20 - frequenza
             self.lineEdit_max_prof.setText(str(self.DATA_LIST[self.rec_num].max_prof))  # 22 - massima profondità
@@ -1271,7 +1260,7 @@ class pyarchinit_Geophysics(QDialog, Ui_DialogGeo):
             unicode(self.lineEdit_x.text()),  # 16 - x
             unicode(self.lineEdit_y.text()),  # 17 - y
             unicode(self.lineEdit_z.text()),  # 18 - z
-            unicode(self.dateEdit_date.currentText()),  # 19 - date
+            unicode(self.lineEdit_date.text()),  # 19 - date
             unicode(self.comboBox_frequenza.currentText()),  # 20 - frequenza
             unicode(self.lineEdit_risoluzione.text()),  # 21 - risoluzione
             unicode(self.lineEdit_max_prof.text()),  # 22 - massima profondità
@@ -1280,11 +1269,11 @@ class pyarchinit_Geophysics(QDialog, Ui_DialogGeo):
         }
 
     def enable_button(self, n):
-        self.pushButton_connect.setEnabled(n)
+        #self.pushButton_connect.setEnabled(n)
 
         self.pushButton_new_rec.setEnabled(n)
 
-        self.pushButton_view_all_2.setEnabled(n)
+        #self.pushButton_view_all_2.setEnabled(n)
 
         self.pushButton_first_rec.setEnabled(n)
 

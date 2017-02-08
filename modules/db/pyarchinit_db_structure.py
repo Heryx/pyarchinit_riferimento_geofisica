@@ -901,11 +901,12 @@ class Geophysics_table:
 	Column('x', String(10)),                        #16
 	Column('y', String(10)),                        #17
 	Column('z', String(10)),                        #18
-	Column('date', Text),                           #19
+	Column('date', String(20)),                           #19
 	Column('frequenza', Text),                      #20
 	Column('risoluzione', Float(2,2)),              #21
 	Column('max_prof', String(10)),                 #22
 	Column('range', String(10)),                    #23
+	Column('bibliografia', Text),					#24
 
 
 	# explicit/composite unique constraint.  'name' is optional.

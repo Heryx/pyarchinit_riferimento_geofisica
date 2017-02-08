@@ -221,12 +221,15 @@ class DB_update:
 		except:
 			pass
 			#verificare se aggiorna le tabelle con i campi nuovi
-"""
+
 		####inventario_lapidei_table
 		table = Table("inventario_lapidei_table", self.metadata, autoload=True)
 		table_column_names_list = []
 		for i in table.columns:
 			table_column_names_list.append(str(i.name))
+
+		if table_column_names_list.__contains__('bibliografia') == False:
+			self.engine.execute("ALTER TABLE inventario_lapidei_table ADD COLUMN bibliografia text")
 
 
 		####geophysics_table
@@ -234,7 +237,10 @@ class DB_update:
 		table_column_names_list = []
 		for i in table.columns:
 			table_column_names_list.append(str(i.name))
-"""
+
+		if table_column_names_list.__contains__('bibliografia') == False:
+			self.engine.execute("ALTER TABLE geophysics_table ADD COLUMN bibliografia text")
+
 
 if __name__ == '__main__':
 	dbup=DB_update()

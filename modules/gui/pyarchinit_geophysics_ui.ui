@@ -764,7 +764,7 @@
    <item row="6" column="12">
     <layout class="QGridLayout" name="gridLayout_9">
      <item row="0" column="0">
-      <widget class="QLineEdit" name="lineEdit_quota_2"/>
+      <widget class="QLineEdit" name="lineEdit_quota"/>
      </item>
      <item row="1" column="0">
       <widget class="QLabel" name="label_15">
@@ -995,7 +995,7 @@
       </font>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>5</number>
      </property>
      <widget class="QWidget" name="tab">
       <attribute name="title">
@@ -1220,13 +1220,13 @@ p, li { white-space: pre-wrap; }
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="QLineEdit" name="lineEdit"/>
+         <widget class="QLineEdit" name="lineEdit_x"/>
         </item>
         <item row="2" column="1">
-         <widget class="QLineEdit" name="lineEdit_2"/>
+         <widget class="QLineEdit" name="lineEdit_y"/>
         </item>
         <item row="4" column="1">
-         <widget class="QLineEdit" name="lineEdit_3"/>
+         <widget class="QLineEdit" name="lineEdit_z"/>
         </item>
         <item row="0" column="2">
          <widget class="QLabel" name="label_65">
@@ -1494,7 +1494,7 @@ p, li { white-space: pre-wrap; }
          </widget>
         </item>
         <item row="1" column="0">
-         <widget class="QComboBox" name="comboBox">
+         <widget class="QComboBox" name="comboBox_modello">
           <item>
            <property name="text">
             <string>IDS</string>
@@ -1528,7 +1528,7 @@ p, li { white-space: pre-wrap; }
          </widget>
         </item>
         <item row="1" column="0">
-         <widget class="QComboBox" name="comboBox_2">
+         <widget class="QComboBox" name="comboBox_velocita">
           <item>
            <property name="text">
             <string>Metodo dell'asta metallica</string>
@@ -1537,16 +1537,6 @@ p, li { white-space: pre-wrap; }
          </widget>
         </item>
        </layout>
-      </widget>
-      <widget class="QDateEdit" name="dateEdit">
-       <property name="geometry">
-        <rect>
-         <x>530</x>
-         <y>30</y>
-         <width>110</width>
-         <height>22</height>
-        </rect>
-       </property>
       </widget>
       <widget class="QLabel" name="label_68">
        <property name="geometry">
@@ -1586,6 +1576,16 @@ p, li { white-space: pre-wrap; }
         <string>Slice</string>
        </property>
       </widget>
+      <widget class="QLineEdit" name="lineEdit_date">
+       <property name="geometry">
+        <rect>
+         <x>530</x>
+         <y>30</y>
+         <width>113</width>
+         <height>20</height>
+        </rect>
+       </property>
+      </widget>
      </widget>
      <widget class="QWidget" name="tab_2">
       <attribute name="title">
@@ -1601,7 +1601,7 @@ p, li { white-space: pre-wrap; }
      </widget>
      <widget class="QWidget" name="tab_5">
       <attribute name="title">
-       <string>Documentazione</string>
+       <string>Bibliografia</string>
       </attribute>
       <widget class="QPushButton" name="pushButton_draw_doc">
        <property name="geometry">
@@ -1629,7 +1629,7 @@ p, li { white-space: pre-wrap; }
         <string>Aggiorna doc</string>
        </property>
       </widget>
-      <widget class="QTableWidget" name="tableWidget_documentazione">
+      <widget class="QTableWidget" name="tableWidget_bibliografia">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -1680,7 +1680,7 @@ p, li { white-space: pre-wrap; }
         <number>1</number>
        </property>
        <property name="columnCount">
-        <number>2</number>
+        <number>4</number>
        </property>
        <attribute name="horizontalHeaderCascadingSectionResizes">
         <bool>false</bool>
@@ -1688,12 +1688,22 @@ p, li { white-space: pre-wrap; }
        <row/>
        <column>
         <property name="text">
-         <string>Tipo documentazione</string>
+         <string>Autore</string>
         </property>
        </column>
        <column>
         <property name="text">
-         <string>Riferimenti</string>
+         <string>Titolo</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Anno</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Fig.</string>
         </property>
        </column>
       </widget>
@@ -1708,7 +1718,7 @@ p, li { white-space: pre-wrap; }
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout_5">
         <item>
-         <widget class="QPushButton" name="pushButton_insert_row_documentazione">
+         <widget class="QPushButton" name="pushButton_insert_row_bibliografia">
           <property name="font">
            <font>
             <pointsize>9</pointsize>
@@ -1720,7 +1730,7 @@ p, li { white-space: pre-wrap; }
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_remove_row_documentazione">
+         <widget class="QPushButton" name="pushButton_remove_row_bibliografia">
           <property name="font">
            <font>
             <pointsize>9</pointsize>
@@ -1758,14 +1768,14 @@ p, li { white-space: pre-wrap; }
               <enum>QFrame::StyledPanel</enum>
              </property>
              <property name="currentIndex">
-              <number>2</number>
+              <number>1</number>
              </property>
              <widget class="QWidget" name="page">
               <property name="geometry">
                <rect>
                 <x>0</x>
-                <y>0</y>
-                <width>424</width>
+                <y>-24</y>
+                <width>597</width>
                 <height>235</height>
                </rect>
               </property>
@@ -2046,7 +2056,7 @@ p, li { white-space: pre-wrap; }
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>290</width>
+                <width>597</width>
                 <height>222</height>
                </rect>
               </property>
@@ -2490,11 +2500,11 @@ p, li { white-space: pre-wrap; }
   <tabstop>pushButton_search_go</tabstop>
   <tabstop>pushButton_sort</tabstop>
   <tabstop>pushButton_view_all</tabstop>
-  <tabstop>pushButton_insert_row_documentazione</tabstop>
-  <tabstop>pushButton_remove_row_documentazione</tabstop>
+  <tabstop>pushButton_insert_row_bibliografia</tabstop>
+  <tabstop>pushButton_remove_row_bibliografia</tabstop>
   <tabstop>pushButton_draw_doc</tabstop>
   <tabstop>pushButton</tabstop>
-  <tabstop>tableWidget_documentazione</tabstop>
+  <tabstop>tableWidget_bibliografia</tabstop>
   <tabstop>comboBox_sito_rappcheck</tabstop>
   <tabstop>pushButton_crea_codice_periodo</tabstop>
   <tabstop>lineEdit_codice_periodo</tabstop>
@@ -2514,7 +2524,7 @@ p, li { white-space: pre-wrap; }
   <tabstop>pushButton_exp_tavole</tabstop>
  </tabstops>
  <resources>
-  <include location="../../../.qgis2/python/plugins/pyarchinit/modules/gui/resources.qrc"/>
+  <include location="../../resources.qrc"/>
  </resources>
  <connections/>
 </ui>
