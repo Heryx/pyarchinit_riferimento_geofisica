@@ -20,6 +20,7 @@
  ***************************************************************************/
 """
 from sqlalchemy import Table, Column, Integer, Date, String, Text, Float, Numeric, MetaData, ForeignKey, engine, create_engine, UniqueConstraint
+
 from pyarchinit_conn_strings import *
 
 
@@ -87,7 +88,7 @@ class US_table:
 	Column('inclusi_materiali_usm', Text),				#50
 	
 	# explicit/composite unique constraint.  'name' is optional.
-	UniqueConstraint('sito', 'area', 'us', name='ID_us_unico')	
+	UniqueConstraint('sito', 'area', 'us', name='ID_us_unico')
 	)
 
 	metadata.create_all(engine)
@@ -194,7 +195,7 @@ class US_table_toimp:
 	Column('documentazione', Text),
 
 	# explicit/composite unique constraint.  'name' is optional.
-    UniqueConstraint('sito', 'area', 'us', name='ID_us_unico_toimp')	
+	UniqueConstraint('sito', 'area', 'us', name='ID_us_unico_toimp')
 	)
 
 	metadata.create_all(engine)
@@ -226,8 +227,6 @@ class Site_table:
 
 	metadata.create_all(engine)
 
-
-
 class Periodizzazione_table:
 	# connection string postgres"
 	internal_connection = Connection()
@@ -254,7 +253,6 @@ class Periodizzazione_table:
 	)
 
 	metadata.create_all(engine)
-
 
 class Inventario_materiali_table:
 	# connection string postgres"
@@ -343,7 +341,6 @@ class Inventario_materiali_table_toimp:
 
 	metadata.create_all(engine)
 
-
 class Struttura_table:
 	# connection string postgres"
 	internal_connection = Connection()
@@ -375,7 +372,7 @@ class Struttura_table:
 	Column('misure_struttura', Text),
 
 	# explicit/composite unique constraint.  'name' is optional.
-    UniqueConstraint('sito', 'sigla_struttura', 'numero_struttura', name='ID_struttura_unico')
+	UniqueConstraint('sito', 'sigla_struttura', 'numero_struttura', name='ID_struttura_unico')
 	)
 
 	metadata.create_all(engine)
@@ -400,7 +397,7 @@ class Media_table:
 	Column('tags', Text),
 
 	# explicit/composite unique constraint.  'name' is optional.
-    UniqueConstraint('filepath', name='ID_media_unico')
+	UniqueConstraint('filepath', name='ID_media_unico')
 	)
 
 	metadata.create_all(engine)
@@ -425,7 +422,7 @@ class Media_thumb_table:
 	Column('filepath', Text),
 
 	# explicit/composite unique constraint.  'name' is optional.
-    UniqueConstraint('media_thumb_filename', name='ID_media_thumb_unico')
+	UniqueConstraint('media_thumb_filename', name='ID_media_thumb_unico')
 	)
 
 	metadata.create_all(engine)
@@ -450,7 +447,7 @@ class Media_to_Entity_table:
 	Column('media_name', Text),
 
 	# explicit/composite unique constraint.  'name' is optional.
-    UniqueConstraint('id_entity','entity_type','id_media', name='ID_mediaToEntity_unico')
+	UniqueConstraint('id_entity','entity_type','id_media', name='ID_mediaToEntity_unico')
 	)
 
 	metadata.create_all(engine)
@@ -495,7 +492,7 @@ class Tafonomia_table:
 	Column('posizione_arti_inferiori', String(50)),
 	Column('completo_si_no', String(2)),
 	Column('disturbato_si_no',  String(2)),
-	Column('in_connessione_si_no',  String(2)),	
+	Column('in_connessione_si_no',  String(2)),
 	Column('caratteristiche', Text),
 	Column('periodo_iniziale', Integer),
 	Column('fase_iniziale', Integer),
@@ -505,7 +502,7 @@ class Tafonomia_table:
 	Column('misure_tafonomia', Text),
 
 	# explicit/composite unique constraint.  'name' is optional.
-    UniqueConstraint('sito','nr_scheda_taf', name='ID_tafonomia_unico')
+	UniqueConstraint('sito','nr_scheda_taf', name='ID_tafonomia_unico')
 	)
 
 	metadata.create_all(engine)
@@ -711,7 +708,6 @@ class DETETA_table:
 
 	metadata.create_all(engine)
 
-
 class Archeozoology_table:
 	# connection string postgres"
 	internal_connection = Connection()
@@ -789,7 +785,6 @@ class Inventario_Lapidei_table:
 	)
 
 	metadata.create_all(engine)
-##############################	
 
 
 class PDF_administrator:
@@ -810,7 +805,7 @@ class PDF_administrator:
 	Column('modello', Text),
 
 	# explicit/composite unique constraint.  'name' is optional.
-    UniqueConstraint('table_name','modello', name='ID_pdf_administrator_unico')
+	UniqueConstraint('table_name','modello', name='ID_pdf_administrator_unico')
 	)
 
 	metadata.create_all(engine)
@@ -842,7 +837,6 @@ class Campioni_table:
 	)
 
 	metadata.create_all(engine)
-
 
 class Documentazione_table:
 	# connection string postgres"
@@ -887,11 +881,11 @@ class Geophysics_table:
 	Column('progetto', String(100)),                #2
 	Column('metodo', Text),                         #3
 	Column('anno', String(4)),                      #4
-	Column('settore', String(10)),                  #5
+	Column('settore', Text),                  #5
 	Column('area', String(10)),                     #6
 	Column('griglia', String(10)),                  #7
-	Column('pdc', Float(3,2)),                      #8
-	Column('quota', Float(3,2)),                    #9
+	Column('pdc', Float(5,2)),                      #8
+	Column('quota', Float(5,2)),                    #9
 	Column('descrizione', Text),                    #10
 	Column('interpretazione', Text),                #11
 	Column('schedatore', Text),                     #12
@@ -900,17 +894,16 @@ class Geophysics_table:
 	Column('velocita', Text),                       #15
 	Column('x', String(10)),                        #16
 	Column('y', String(10)),                        #17
-	Column('z', String(10)),                        #18
-	Column('date', String(20)),                           #19
+	Column('date', String(20)),                     #19
 	Column('frequenza', Text),                      #20
-	Column('risoluzione', Float(2,2)),              #21
+	Column('risoluzione', Float(5,2)),              #21
 	Column('max_prof', String(10)),                 #22
 	Column('range', String(10)),                    #23
 	Column('bibliografia', Text),					#24
 
 
 	# explicit/composite unique constraint.  'name' is optional.
-    UniqueConstraint('sito', 'progetto', 'metodo', 'anno', name='ID_geo_unico')
+	UniqueConstraint('sito', 'progetto', 'metodo', 'anno', name='ID_geo_unico')
 	)
 
 	metadata.create_all(engine)
